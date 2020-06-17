@@ -150,16 +150,16 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                           <div class="btn-group">
-                            <div class="offset-2 col-2">
-                                <button class="btn btn-secondary btn-sm" data-dismiss="modal">
-                                    Cancel
-                                </button>
+                            <div class="btn-group">
+                                <div class="offset-2 col-2">
+                                    <button class="btn btn-secondary btn-sm" data-dismiss="modal">
+                                        Cancel
+                                    </button>
+                                </div>
+                                <div class="offset-2 col-2">
+                                    <button type="submit" class="btn btn-primary btn-sm">Reserve</button>
+                                </div>
                             </div>
-                            <div class="offset-2 col-2">
-                                <button type="submit" class="btn btn-primary btn-sm">Reserve</button>
-                            </div>
-                        </div>
                         </div>
                     </form>
                 </div>
@@ -234,14 +234,10 @@
                     <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
                         <span class="carousel-control-next-icon"></span>
                     </a>
-                    <div class="btn-group" id="carouselButton">
-                        <button class="btn btn-danger btn-sm" id="pauseButton">
-                            <span class="fa fa-pause"></span>
-                        </button>
-                        <button class="btn btn-danger btn-sm" id="playButton">
-                            <span class="fa fa-play"></span>
-                        </button>
-                    </div>
+
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
 
@@ -355,14 +351,22 @@
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#mycarousel').carousel({interval: 2000});
-            $('#pauseButton').click(function(){
-                $('#mycarousel').carousel('pause');
+        $(document).ready(function () {
+            $('#mycarousel').carousel({ interval: 2000 });
+            $('#carouselButton').click(function () {
+                if ($('#carouselButton').children('span').hasClass('fa-pause')) {
+                    $('#mycarousel').carousel('pause');
+                    $('#carouselButton').children('span').removeClass('fa-pause');
+                    $('#carouselButton').children('span').addClass('fa-play');
+                }
+                else if ($('#carouselButton').children('span').hasClass('fa-play')) {
+                    $('#myCarousel').carousel('cycle');
+                    $('#carouselButton').children('span').removeClass('fa-play');
+                    $('#carouselButton').children('span').addClass('fa-pause');
+                }
+
             });
-            $('#playButton').click(function(){
-                $('#mycarousel').carousel('cycle');
-            });
+
         });
     </script>
 </body>
