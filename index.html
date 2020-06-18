@@ -16,29 +16,6 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-dark navbar-expand-sm  fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="#"><img src="/img/logo.png" height="30" width="41" alt=""></a>
-            <div class="collapse navbar-collapse" id="Navbar">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active"><a class="nav-link" href="/index.html"><span
-                                class="fa fa-home fa-lg"></span> Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/aboutus.html"><span class="fa fa-info fa-lg"></span>
-                            About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="/contactus.html"><span
-                                class="fa fa-address-card"></span> Contact</a></li>
-                </ul>
-                <span class="navbar-text"> <a href="" data-toggle="modal" data-target="#loginModal">
-                        <span class="fa fa-sign-in"></span> Login
-                    </a></span>
-            </div>
-        </div>
-    </nav>
     <div id="loginModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
@@ -83,6 +60,30 @@
             </div>
         </div>
     </div>
+    <nav class="navbar navbar-dark navbar-expand-sm  fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="/img/logo.png" height="30" width="41" alt=""></a>
+            <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active"><a class="nav-link" href="/index.html"><span
+                                class="fa fa-home fa-lg"></span> Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aboutus.html"><span class="fa fa-info fa-lg"></span>
+                            About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><span class="fa fa-list fa-lg"></span> Menu</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/contactus.html"><span
+                                class="fa fa-address-card"></span> Contact</a></li>
+                </ul>
+                <span class="navbar-text" > <a href="" id="loginButton">
+                        <span class="fa fa-sign-in"></span> Login
+                    </a></span>
+            </div>
+        </div>
+    </nav>
+  
     <div id="reserveTable" class="modal fade" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
@@ -180,8 +181,7 @@
                     <img src="/img/logo.png" alt="img-fluid">
                 </div>
                 <div class="col-12  col-sm align-self-center">
-                    <button type="button" class="btn btn-block btn-sm btn-warning " data-toggle="modal"
-                        data-target="#reserveTable">
+                    <button type="button" id="reserveButton" class="btn btn-block btn-sm btn-warning ">
                         Reserve Table</button>
                 </div>
             </div>
@@ -365,6 +365,13 @@
                     $('#carouselButton').children('span').addClass('fa-pause');
                 }
 
+            });
+            $('#reserveButton').click(function(){
+                $('#reserveTable').modal('show');
+            });
+            $('#loginButton').click(function(e){
+                e.preventDefault();
+                $('#loginModal').modal('show');
             });
 
         });
